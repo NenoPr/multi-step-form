@@ -1,4 +1,20 @@
+import { useState } from "react";
+
 function PI_Form(props) {
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(
+      `Name: ${formData.name}, Email: ${formData.email}, Phone Number: ${formData.phone}`
+    );
+  };
+
   return (
     <>
       <div className="form-header-container">
@@ -12,6 +28,10 @@ function PI_Form(props) {
           <div className="form-text form-pi-text">Name</div>
           <input
             type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
             className="text-input form-pi-input"
             placeholder="e.g. Stephen King"
           />
@@ -20,6 +40,10 @@ function PI_Form(props) {
           <div className="form-text form-pi-text">Email Address</div>
           <input
             type="text"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             className="text-input form-pi-input"
             placeholder="e.g. stephenking@lorem.com"
           />
@@ -28,12 +52,18 @@ function PI_Form(props) {
           <div className="form-text form-pi-text">Phone Number</div>
           <input
             type="text"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
             className="text-input form-pi-input"
             placeholder="e.g. +1 234 567 890"
           />
         </div>
       </form>
-      <button className="form-next-step">Next Step</button>
+      <button className="form-next-step" onClick={handleSubmit}>
+        Next Step
+      </button>
     </>
   );
 }

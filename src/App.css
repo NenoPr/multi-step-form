@@ -1,3 +1,4 @@
+@import url("/src/assets/stylesheets/fonts.css");
 #root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,18 +29,19 @@
   --white: hsl(0, 0%, 100%);
 }
 
-body {
-  padding: 0;
-  margin: 0;
-}
-
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: var(--light-blue);
+  font-family: "Ubuntu";
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
 
 .main-container {
@@ -112,7 +114,7 @@ body {
 }
 
 .form-header {
-  font-weight: bolder;
+  font-weight: 700;
   color: var(--marine-blue);
   font-size: 2rem;
   margin-bottom: 0;
@@ -137,15 +139,28 @@ body {
 
 .form-text {
   color: var(--marine-blue);
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .text-input {
   padding: 1rem;
-  font-size: 1.5rem;
-  border-color: var(--cool-gray);
-  border-radius: 1rem;
+  font-size: 1rem;
+  color: var(--marine-blue);
   border: 0.1rem solid var(--cool-gray);
+  border-radius: 1rem;
+  font-weight: 700;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--purplish-blue);
+}
+
+.plan-buttons {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .form-next-step {
@@ -157,9 +172,11 @@ body {
   border-radius: 1rem;
   width: fit-content;
   justify-self: flex-end;
-  align-self: flex-end;
+}
+
+.form-previous-step {
+  color: var(--cool-gray);
 }
 
 .attribution {
-
 }

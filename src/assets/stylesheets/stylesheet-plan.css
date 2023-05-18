@@ -1,0 +1,114 @@
+.plan-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.selection-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.plan-selection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  border: 0.1rem solid var(--light-gray);
+  padding: 1rem;
+  width: 7rem;
+  height: 9rem;
+  cursor: pointer;
+}
+
+.plan-selection:hover {
+    border-color: var(--purplish-blue);
+    background-color: var(--magnolia);
+}
+
+.plan-desc {
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-image {
+  width: 3rem;
+}
+
+.plan-name {
+  color: var(--marine-blue);
+  font-weight: 700;
+}
+
+.plan-price {
+  color: var(--cool-gray);
+}
+
+.switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: var(--marine-blue);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.plan-rate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: var(--light-gray);
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.plan-rate-text {
+  color: var(--cool-gray);
+}
