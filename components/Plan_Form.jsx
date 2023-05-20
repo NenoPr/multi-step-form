@@ -61,7 +61,7 @@ function Plan_Form(props) {
           </div>
         </div>
         <div className="plan-rate">
-          <div className="plan-rate-text">Monthly</div>
+          <div className="plan-rate-text plan-rate-text-selected">Monthly</div>
           <label className="switch" htmlFor="checkbox">
             <input type="checkbox" id="checkbox" />
             <div className="slider round"></div>

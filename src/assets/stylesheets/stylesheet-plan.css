@@ -5,6 +5,7 @@
 }
 
 .selection-container {
+  flex: 10;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -23,13 +24,13 @@
 }
 
 .plan-selection:hover {
-    border-color: var(--purplish-blue);
-    background-color: var(--magnolia);
+  border-color: var(--purplish-blue);
+  background-color: var(--magnolia);
 }
 
 .plan-desc {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .plan-image {
@@ -57,7 +58,7 @@
 }
 
 .slider {
-  background-color: #ccc;
+  background-color: var(--marine-blue);
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -111,4 +112,9 @@ input:checked + .slider:before {
 
 .plan-rate-text {
   color: var(--cool-gray);
+  font-weight: 700;
+}
+
+.plan-rate-text-selected {
+  color: var(--marine-blue);
 }

@@ -1,0 +1,90 @@
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  background-color: var(--magnolia);
+  gap: 1rem;
+}
+
+.summary-plan-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.summary-plan {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-plan-desc {
+  color: var(--marine-blue);
+  font-weight: 700;
+}
+
+.summary-pricing {
+  color: var(--marine-blue);
+  font-weight: 700;
+}
+
+.summary-line {
+  border-top: 0.1rem solid gray;
+  width: 80%;
+  align-self: center;
+}
+
+.summary-addons {
+  display: flex;
+  flex-direction: column;
+  color: var(--cool-gray);
+}
+
+.summary-service {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.summary-total-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--cool-gray);
+}
+
+.summary-total-text {
+  background-color: white;
+  margin-left: 1rem;
+}
+
+.summary-total-price {
+  margin-right: 1rem;
+  color: var(--purplish-blue);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.form-previous-step:hover {
+  color: var(--cool-gray);
+  border-color: #fff;
+  outline: #fff;
+}
+
+.form-confirm {
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: white;
+  background-color: var(--marine-blue);
+  border-radius: 1rem;
+  width: fit-content;
+  justify-self: flex-end;
+}
+
+.form-confirm:hover {
+  background-color: var(--purplish-blue);
+  border-color: none;
+}

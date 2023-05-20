@@ -107,6 +107,7 @@ body {
 }
 
 .form-header-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-self: flex-start;
@@ -156,7 +157,8 @@ body {
   border-color: var(--purplish-blue);
 }
 
-.plan-buttons {
+.form-buttons {
+  flex: 1;
   display: flex;
   width: 100%;
   align-items: flex-end;
@@ -172,10 +174,24 @@ body {
   border-radius: 1rem;
   width: fit-content;
   justify-self: flex-end;
+  border-color: var(--marine-blue);
+  outline-color: var(--marine-blue);
+  outline: var(--marine-blue);
+}
+
+.form-next-step:hover {
+  background-color: #2497d9;
+  border-color: #2497d9;
+  outline-color: #2497d9;
+  outline: #2497d9;
 }
 
 .form-previous-step {
-  color: var(--cool-gray);
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: var(--light-gray);
+  background-color: #fff;
 }
 
 .attribution {

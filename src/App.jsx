@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import PI_Form from "../components/PI_Form";
 import Plan_Form from "../components/Plan_Form";
+import AD_Form from "../components/AD_Form";
+import SUM_Form from "../components/SUM_Form";
 import "./App.css";
 
 function App() {
@@ -52,11 +54,13 @@ function App() {
 
         <div className="step-container step-1-pi-container">
           {/* <PI_Form props={setForm}></PI_Form> */}
-          <Plan_Form></Plan_Form>
+          {/* <Plan_Form></Plan_Form> */}
+          {/* <AD_Form></AD_Form> */}
+          <SUM_Form></SUM_Form>
         </div>
       </div>
       <div className="attribution">
-        Challenge by
+        Challenge by 
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
           Frontend Mentor
         </a>
