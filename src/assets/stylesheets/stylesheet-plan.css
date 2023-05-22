@@ -1,14 +1,19 @@
 .plan-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .selection-container {
-  flex: 10;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .plan-selection {
@@ -18,9 +23,9 @@
   border-radius: 1rem;
   border: 0.1rem solid var(--light-gray);
   padding: 1rem;
-  width: 7rem;
-  height: 9rem;
   cursor: pointer;
+  height: 8vw;
+  width: 6.5vw;
 }
 
 .plan-selection:hover {
@@ -28,22 +33,31 @@
   background-color: var(--magnolia);
 }
 
-.plan-desc {
-  display: flex;
-  flex-direction: column;
+.plan-selection-selected {
+  border-color: var(--purplish-blue);
+  background-color: var(--magnolia);
 }
 
 .plan-image {
   width: 3rem;
+  pointer-events: none;
+}
+
+.plan-desc {
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
 }
 
 .plan-name {
   color: var(--marine-blue);
   font-weight: 700;
+  pointer-events: none;
 }
 
 .plan-price {
   color: var(--cool-gray);
+  pointer-events: none;
 }
 
 .switch {
@@ -100,14 +114,16 @@ input:checked + .slider:before {
 }
 
 .plan-rate {
+  grid-column: 1 / 4;
+  grid-row: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  background-color: var(--light-gray);
+  background-color: var(--magnolia);
   padding: 1rem;
   border-radius: 1rem;
-  width: 100%;
+  height: fit-content;
 }
 
 .plan-rate-text {
@@ -115,6 +131,12 @@ input:checked + .slider:before {
   font-weight: 700;
 }
 
-.plan-rate-text-selected {
+.plan-rate-selected {
   color: var(--marine-blue);
+}
+
+.plan-buttons {
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-between;
 }

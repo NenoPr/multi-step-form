@@ -8,7 +8,35 @@ import SUM_Form from "../components/SUM_Form";
 import "./App.css";
 
 function App() {
-  const [form, setForm] = useState([]);
+  const [form, setForm] = useState({
+    personalInfo: { name: "", email: "", phone: "" },
+    plan: {
+      plan: "arcade",
+      yearlySubscription: false,
+    },
+    planPrice: {
+      monthly: {
+        arcade: 9,
+        advanced: 12,
+        pro: 15,
+      },
+      yearly: {
+        arcade: 90,
+        advanced: 120,
+        pro: 150,
+      },
+    },
+    addons: {
+      onlineService: false,
+      largerStorage: false,
+      customizableProfile: false,
+    },
+    addonsPrice: {
+      onlineService: 1,
+      largerStorage: 2,
+      customizableProfile: 2,
+    },
+  });
 
   return (
     <>
@@ -52,15 +80,15 @@ function App() {
           </div>
         </div>
 
-        <div className="step-container step-1-pi-container">
-          {/* <PI_Form props={setForm}></PI_Form> */}
-          {/* <Plan_Form></Plan_Form> */}
-          {/* <AD_Form></AD_Form> */}
-          <SUM_Form></SUM_Form>
+        <div className="form-container">
+          {/* <PI_Form props={{ form, setForm }}></PI_Form> */}
+          <Plan_Form props={{ form, setForm }}></Plan_Form>
+          {/* <AD_Form props={{ form, setForm }}></AD_Form> */}
+          {/* <SUM_Form></SUM_Form> */}
         </div>
       </div>
       <div className="attribution">
-        Challenge by 
+        Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
           Frontend Mentor
         </a>
