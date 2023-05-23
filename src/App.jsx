@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import PI_Form from "../components/PI_Form";
@@ -36,7 +36,19 @@ function App() {
       largerStorage: 2,
       customizableProfile: 2,
     },
+    showComponent: "PI_Form",
   });
+
+  const handleComponents = () => {
+    if (form.showComponent === "PI_Form")
+      return <PI_Form props={{ form, setForm }}></PI_Form>;
+    if (form.showComponent === "Plan_Form")
+      return <Plan_Form props={{ form, setForm }}></Plan_Form>;
+    if (form.showComponent === "AD_Form")
+      return <AD_Form props={{ form, setForm }}></AD_Form>;
+    if (form.showComponent === "SUM_Form")
+      return <SUM_Form props={{ form, setForm }}></SUM_Form>;
+  };
 
   return (
     <>
@@ -80,11 +92,8 @@ function App() {
           </div>
         </div>
 
-        <div className="form-container">
-          {/* <PI_Form props={{ form, setForm }}></PI_Form> */}
-          <Plan_Form props={{ form, setForm }}></Plan_Form>
-          {/* <AD_Form props={{ form, setForm }}></AD_Form> */}
-          {/* <SUM_Form></SUM_Form> */}
+        <div className="form-container" id="form-component">
+          {handleComponents()}
         </div>
       </div>
       <div className="attribution">

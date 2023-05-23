@@ -11,13 +11,14 @@ function PI_Form(data) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Name: ${formData.name}, Email: ${formData.email}, Phone Number: ${formData.phone}`
-    );
+    // alert(
+    //   `Name: ${formData.name}, Email: ${formData.email}, Phone Number: ${formData.phone}`
+    // );
+    data.props.setForm((prevFormData) => ({ ...prevFormData, showComponent: "Plan_Form" }))
   };
 
   return (
-    <div className="pi-container">
+    <>
       <div className="form-header-container">
         <h2 className="form-header">Personal Info</h2>
         <p className="form-desc">
@@ -67,7 +68,7 @@ function PI_Form(data) {
       <button className="form-next-step" onClick={handleSubmit}>
         Next Step
       </button>
-    </div>
+    </>
   );
 }
 

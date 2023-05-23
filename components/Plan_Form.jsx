@@ -47,17 +47,25 @@ function Plan_Form(data) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Plan: ${formData.plan}, Yearly Subscription: ${formData.yearlySubscription}`
-    );
+    // alert(
+    //   `Plan: ${formData.plan}, Yearly Subscription: ${formData.yearlySubscription}`
+    // );
     data.props.setForm((prevFormData) => ({
       ...prevFormData,
       ["plan"]: {
         plan: formData.plan,
         yearlySubscription: formData.yearlySubscription,
       },
+      showComponent: "AD_Form"
     }));
   };
+
+  const goBack = () => {
+    data.props.setForm((prevFormData) => ({
+      ...prevFormData,
+      showComponent: "PI_Form"
+    }));
+  }
 
   return (
     <>
@@ -117,7 +125,7 @@ function Plan_Form(data) {
         </div>
       </div>
       <div className="plan-buttons">
-        <button className="form-previous-step" onClick={handleSubmit}>
+        <button className="form-previous-step" onClick={goBack}>
           Go Back
         </button>
         <button className="form-next-step" onClick={handleSubmit}>

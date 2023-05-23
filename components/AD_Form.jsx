@@ -17,16 +17,24 @@ function AD_Form(data) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Online: ${addonsData.onlineService}, Storage: ${addonsData.largerStorage}, Profile: ${addonsData.customizableProfile}`
-    );
+    // alert(
+    //   `Online: ${addonsData.onlineService}, Storage: ${addonsData.largerStorage}, Profile: ${addonsData.customizableProfile}`
+    // );
     console.log(addonsData.onlineService);
     data.props.setForm((prevFormData) => ({
       ...prevFormData,
       ["addons"]: addonsData,
+      showComponent: "SUM_Form"
     }));
     console.log("Data form", data.props.form);
   };
+
+  const goBack = () => {
+    data.props.setForm((prevFormData) => ({
+      ...prevFormData,
+      showComponent: "Plan_Form"
+    }));
+  }
 
   return (
     <>
@@ -100,7 +108,7 @@ function AD_Form(data) {
       }
 
       <div className="form-buttons">
-        <button className="form-previous-step" onClick={handleSubmit}>
+        <button className="form-previous-step" onClick={goBack}>
           Go Back
         </button>
         <button className="form-next-step" onClick={handleSubmit}>
