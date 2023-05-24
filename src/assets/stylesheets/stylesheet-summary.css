@@ -1,9 +1,17 @@
+.summary-container-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .summary-container {
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
   background-color: var(--magnolia);
   gap: 1rem;
+  height: fit-content;
+  padding-bottom: 1rem;
 }
 
 .summary-plan-container {
@@ -87,4 +95,8 @@
 .form-confirm:hover {
   background-color: var(--purplish-blue);
   border-color: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

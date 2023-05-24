@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "/src/assets/stylesheets/stylesheet-pi.css";
 
 function PI_Form(data) {
@@ -9,12 +9,24 @@ function PI_Form(data) {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
+  useEffect(() => {
+    document.querySelectorAll(".sidebar-counter").forEach((item) => {
+      item.classList.remove("sidebar-counter-active");
+      if (item.classList.contains("sidebar-counter-1")) {
+        item.classList.add("sidebar-counter-active");
+      }
+    });
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // alert(
     //   `Name: ${formData.name}, Email: ${formData.email}, Phone Number: ${formData.phone}`
     // );
-    data.props.setForm((prevFormData) => ({ ...prevFormData, showComponent: "Plan_Form" }))
+    data.props.setForm((prevFormData) => ({
+      ...prevFormData,
+      showComponent: "Plan_Form",
+    }));
   };
 
   return (

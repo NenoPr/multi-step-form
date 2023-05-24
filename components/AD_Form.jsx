@@ -2,10 +2,16 @@ import { useState, useEffect } from "react";
 import "/src/assets/stylesheets/stylesheet-addon.css";
 
 function AD_Form(data) {
-  console.log(data.props.form.addons);
   const [addonsData, setAddonsData] = useState(data.props.form.addons);
 
-  useEffect(() => {});
+  useEffect(() => {
+    document.querySelectorAll(".sidebar-counter").forEach((item) => {
+      item.classList.remove("sidebar-counter-active");
+      if (item.classList.contains("sidebar-counter-3")) {
+        item.classList.add("sidebar-counter-active");
+      }
+    });
+  }, []);
 
   const handleChange = (event) => {
     const addon = event.target.getAttribute("addon");
@@ -24,7 +30,7 @@ function AD_Form(data) {
     data.props.setForm((prevFormData) => ({
       ...prevFormData,
       ["addons"]: addonsData,
-      showComponent: "SUM_Form"
+      showComponent: "SUM_Form",
     }));
     console.log("Data form", data.props.form);
   };
@@ -32,9 +38,9 @@ function AD_Form(data) {
   const goBack = () => {
     data.props.setForm((prevFormData) => ({
       ...prevFormData,
-      showComponent: "Plan_Form"
+      showComponent: "Plan_Form",
     }));
-  }
+  };
 
   return (
     <>
@@ -49,7 +55,7 @@ function AD_Form(data) {
           <div
             className="addon-selection"
             addon="onlineService"
-            selection={addonsData.onlineService}
+            selection={addonsData.onlineService ? "true" : "false"}
             onClick={handleChange}
           >
             <input
@@ -58,6 +64,7 @@ function AD_Form(data) {
               id="online-service"
               className="addon-checkbox onlineService-check"
               checked={addonsData.onlineService}
+              onChange={() => {}}
             />
             <div className="addon-desc-container">
               <div className="addon-name">Online service</div>
@@ -69,7 +76,7 @@ function AD_Form(data) {
           <div
             className="addon-selection"
             addon="largerStorage"
-            selection={addonsData.largerStorage}
+            selection={addonsData.largerStorage ? "true" : "false"}
             onClick={handleChange}
           >
             <input
@@ -78,6 +85,7 @@ function AD_Form(data) {
               id="larger-storage"
               className="addon-checkbox largerStorage-check"
               checked={addonsData.largerStorage}
+              onChange={() => {}}
             />
             <div className="addon-desc-container">
               <div className="addon-name">Larger storage</div>
@@ -88,7 +96,7 @@ function AD_Form(data) {
           <div
             className="addon-selection"
             addon="customizableProfile"
-            selection={addonsData.customizableProfile}
+            selection={addonsData.customizableProfile ? "true" : "false"}
             onClick={handleChange}
           >
             <input
@@ -97,6 +105,7 @@ function AD_Form(data) {
               id="customizable-profile"
               className="addon-checkbox customizableProfile-check"
               checked={addonsData.customizableProfile}
+              onChange={() => {}}
             />
             <div className="addon-desc-container">
               <div className="addon-name">Customizable Profile</div>

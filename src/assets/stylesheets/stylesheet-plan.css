@@ -24,8 +24,8 @@
   border: 0.1rem solid var(--light-gray);
   padding: 1rem;
   cursor: pointer;
-  height: 8vw;
-  width: 6.5vw;
+  /* height: 8vw;
+  width: 6.5vw; */
 }
 
 .plan-selection:hover {
@@ -40,6 +40,7 @@
 
 .plan-image {
   width: 3rem;
+  margin-bottom: 45%;
   pointer-events: none;
 }
 

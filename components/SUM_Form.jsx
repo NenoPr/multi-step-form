@@ -1,51 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "/src/assets/stylesheets/stylesheet-summary.css";
 
 function AD_Form(data) {
   const [formData, setFormData] = useState(data.props.form);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  };
+  useEffect(() => {
+    document.querySelectorAll(".sidebar-counter").forEach((item) => {
+      item.classList.remove("sidebar-counter-active");
+      if (item.classList.contains("sidebar-counter-4")) {
+        item.classList.add("sidebar-counter-active");
+      }
+    });
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Name: ${formData.name}, Email: ${formData.email}, Phone Number: ${formData.phone}`
-    );
   };
 
   const goBack = () => {
     data.props.setForm((prevFormData) => ({
       ...prevFormData,
-      showComponent: "AD_Form"
+      showComponent: "AD_Form",
     }));
-  }
+  };
 
   const upperCase = (item) => {
-    return item[0].toUpperCase() + item.slice(1)
-  }
+    return item[0].toUpperCase() + item.slice(1);
+  };
 
   const showPricing = (data) => {
     if (!data.plan.yearlySubscription) {
-      return "$" + data.planPrice.monthly[data.plan.plan] + "/mo"
-    } else return "$" + data.planPrice.yearly[data.plan.plan] + "/yr"
-  }
+      return "$" + data.planPrice.monthly[data.plan.plan] + "/mo";
+    } else return "$" + data.planPrice.yearly[data.plan.plan] + "/yr";
+  };
 
-  const showAddOns = () => {
-    let node = {}
-    let node2;
-    if (formData.addons.onlineService) {
-      node2 = React.createElement(
-        <div className="summary-service">
-            <div className="summary-service-plan">Online storage</div>
-            <div className="summary-service-price">+$1/mo</div>
-          </div>
-      )
+  const showTotalAddonPrice = () => {
+    let sum = 0;
+    formData.addons.onlineService ? sum++ : "";
+    formData.addons.largerStorage ? (sum = sum + 2) : "";
+    formData.addons.customizableProfile ? (sum = sum + 2) : "";
+    if (formData.plan.yearlySubscription) {
+      sum = sum + formData.planPrice.yearly[formData.plan.plan];
+    } else {
+      sum = sum + formData.planPrice.monthly[formData.plan.plan];
     }
-    return node2;
-  }
+    if (formData.plan.yearlySubscription) return `+$${sum}/yr`;
+    else return `+$${sum}/mo`;
+  };
+
+  const backToPlan = () => {
+    data.props.setForm((prevFormData) => ({
+      ...prevFormData,
+      showComponent: "Plan_Form",
+    }));
+  };
 
   return (
     <>
@@ -55,30 +63,44 @@ function AD_Form(data) {
           Double-check everything looks OK before confirming.
         </p>
       </div>
-      <div className="summary-container">
-        <div className="summary-plan-container">
-          <div className="summary-plan">
-            <div className="summary-plan-desc">{upperCase(formData.plan.plan)} {formData.plan.yearlySubscription ? "(Yearly)" : "(Monthly)"}</div>
-            <a href="">Change</a>
+      <div className="summary-container-main">
+        <div className="summary-container">
+          <div className="summary-plan-container">
+            <div className="summary-plan">
+              <div className="summary-plan-desc">
+                {upperCase(formData.plan.plan)}{" "}
+                {formData.plan.yearlySubscription ? "(Yearly)" : "(Monthly)"}
+              </div>
+              <a onClick={backToPlan}>Change</a>
+            </div>
+            <div className="summary-pricing">{showPricing(formData)}</div>
           </div>
-          <div className="summary-pricing">{showPricing(formData)}</div>
+          <div className="summary-line"></div>
+          <div className="summary-addons">
+            {formData.addons.onlineService ? (
+              <div className="summary-service">
+                <div className="summary-service-plan">Online storage</div>
+                <div className="summary-service-price">+$1/mo</div>
+              </div>
+            ) : null}
+            {formData.addons.largerStorage ? (
+              <div className="summary-service">
+                <div className="summary-service-plan">Larger storage</div>
+                <div className="summary-service-price">+$1/mo</div>
+              </div>
+            ) : null}
+            {formData.addons.customizableProfile ? (
+              <div className="summary-service">
+                <div className="summary-service-plan">Customizable profile</div>
+                <div className="summary-service-price">+$2/mo</div>
+              </div>
+            ) : null}
+          </div>
         </div>
-        <div className="summary-line"></div>
-        <div className="summary-addons">
-          {/* {showAddOns()} */}
-          <div className="summary-service">
-            <div className="summary-service-plan">Online storage</div>
-            <div className="summary-service-price">+$1/mo</div>
-          </div>
-          <div className="summary-service">
-            <div className="summary-service-plan">Larger storage</div>
-            <div className="summary-service-price">+$2/mo</div>
-          </div>
+        <div className="summary-total-container">
+          <div className="summary-total-text">Total (per month)</div>
+          <div className="summary-total-price">{showTotalAddonPrice()}</div>
         </div>
-      </div>
-      <div className="summary-total-container">
-        <div className="summary-total-text">Total (per month)</div>
-        <div className="summary-total-price">+$12/mo</div>
       </div>
 
       <div className="form-buttons">

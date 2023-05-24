@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import PI_Form from "../components/PI_Form";
 import Plan_Form from "../components/Plan_Form";
 import AD_Form from "../components/AD_Form";
@@ -55,7 +53,7 @@ function App() {
       <div className="main-container">
         <div className="sidebar-container">
           <div className="sidebar-step-1 sidebar">
-            <div className="sidebar-counter">
+            <div className="sidebar-counter sidebar-counter-1">
               <div>1</div>
             </div>
             <div className="sidebar-info">
@@ -64,7 +62,7 @@ function App() {
             </div>
           </div>
           <div className="sidebar-step-2 sidebar">
-            <div className="sidebar-counter">
+            <div className="sidebar-counter sidebar-counter-2">
               <div>2</div>
             </div>
             <div className="sidebar-info">
@@ -73,7 +71,7 @@ function App() {
             </div>
           </div>
           <div className="sidebar-step-3 sidebar">
-            <div className="sidebar-counter">
+            <div className="sidebar-counter sidebar-counter-3">
               <div>3</div>
             </div>
             <div className="sidebar-info">
@@ -82,7 +80,7 @@ function App() {
             </div>
           </div>
           <div className="sidebar-step-4 sidebar">
-            <div className="sidebar-counter">
+            <div className="sidebar-counter sidebar-counter-4">
               <div>4</div>
             </div>
             <div className="sidebar-info">
