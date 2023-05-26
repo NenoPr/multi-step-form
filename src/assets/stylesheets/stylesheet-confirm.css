@@ -1,0 +1,35 @@
+.confirm-container {
+    justify-self: center;
+    grid-column: 1;
+    grid-row: 1 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 25vw;
+}
+
+.confirm-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.confirm-image {
+    object-fit: contain;
+    object-position: 0;
+}
+
+.confirm-thanks-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--marine-blue);
+    width: fit-content;
+}
+
+.confirm-text {
+    color: var(--cool-gray);
+    text-align: center;
+}

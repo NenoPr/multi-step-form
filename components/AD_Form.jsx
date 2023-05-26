@@ -45,10 +45,10 @@ function AD_Form(data) {
   return (
     <>
       <div className="form-header-container">
-        <h2 className="form-header">Pick add-ons</h2>
-        <p className="form-desc">
+        <div className="form-header">Pick add-ons</div>
+        <div className="form-desc">
           Add-ons help enhance your gaming experience.
-        </p>
+        </div>
       </div>
       {
         <div className="addon-container">

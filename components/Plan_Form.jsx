@@ -23,7 +23,7 @@ function Plan_Form(data) {
 
   useEffect(() => {
     handleSliderCss();
-    console.log(planPrice)
+    console.log(planPrice);
     if (activeSubscription) {
       setPlanPrice({
         arcade: "$90/yo",
@@ -78,6 +78,11 @@ function Plan_Form(data) {
     // alert(
     //   `Plan: ${formData.plan}, Yearly Subscription: ${formData.yearlySubscription}`
     // );
+    if (formData.plan === "") {
+      document.querySelector(".plan-selection-error").innerText =
+        "Please select a plan.";
+      return;
+    }
     data.props.setForm((prevFormData) => ({
       ...prevFormData,
       ["plan"]: {
@@ -98,10 +103,10 @@ function Plan_Form(data) {
   return (
     <>
       <div className="form-header-container">
-        <h2 className="form-header">Select your plan</h2>
-        <p className="form-desc">
+        <div className="form-header">Select your plan</div>
+        <div className="form-desc">
           You have the option of monthly or yearly billing.
-        </p>
+        </div>
       </div>
       <div className="plan-container">
         <div className="selection-container">
@@ -114,6 +119,13 @@ function Plan_Form(data) {
             <div className="plan-desc">
               <div className="plan-name">Arcade</div>
               <div className="plan-price">{planPrice.arcade}</div>
+              {formData.yearlySubscription ? (
+                <div className="plan-yearly-free">2 months free</div>
+              ) : (
+                <div className="plan-yearly-free plan-yearly-invisible">
+                  2 months free
+                </div>
+              )}
             </div>
           </div>
           <div
@@ -129,6 +141,13 @@ function Plan_Form(data) {
             <div className="plan-desc">
               <div className="plan-name">Advanced</div>
               <div className="plan-price">{planPrice.advanced}</div>
+              {formData.yearlySubscription ? (
+                <div className="plan-yearly-free">2 months free</div>
+              ) : (
+                <div className="plan-yearly-free plan-yearly-invisible">
+                  2 months free
+                </div>
+              )}
             </div>
           </div>
           <div className="plan-selection" onClick={handleChange} plan="pro">
@@ -140,6 +159,13 @@ function Plan_Form(data) {
             <div className="plan-desc">
               <div className="plan-name">Pro</div>
               <div className="plan-price">{planPrice.pro}</div>
+              {formData.yearlySubscription ? (
+                <div className="plan-yearly-free">2 months free</div>
+              ) : (
+                <div className="plan-yearly-free plan-yearly-invisible">
+                  2 months free
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -156,6 +182,7 @@ function Plan_Form(data) {
           </label>
           <div className="plan-rate-text plan-yearly">Yearly</div>
         </div>
+        <div className="plan-selection-error"></div>
       </div>
       <div className="plan-buttons">
         <button className="form-previous-step" onClick={goBack}>

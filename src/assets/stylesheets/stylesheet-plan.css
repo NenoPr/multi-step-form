@@ -1,9 +1,18 @@
+.plan-selection-error {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
+  align-self: self-end;
+  height: 1rem;
+  color: red;
+  font-weight: 600;
+}
+
 .plan-container {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
   justify-content: space-between;
-  width: 100%;
 }
 
 .selection-container {
@@ -24,8 +33,9 @@
   border: 0.1rem solid var(--light-gray);
   padding: 1rem;
   cursor: pointer;
-  /* height: 8vw;
-  width: 6.5vw; */
+  height: fit-content;
+  min-width: 120px;
+  width: max-content;
 }
 
 .plan-selection:hover {
@@ -59,6 +69,17 @@
 .plan-price {
   color: var(--cool-gray);
   pointer-events: none;
+}
+
+.plan-yearly-free {
+  font-style: italic;
+  color: var(--marine-blue);
+  font-size: .9rem;
+  height: .9rem;
+}
+
+.plan-yearly-invisible {
+  opacity: 0;
 }
 
 .switch {

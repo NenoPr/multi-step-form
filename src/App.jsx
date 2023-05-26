@@ -3,13 +3,14 @@ import PI_Form from "../components/PI_Form";
 import Plan_Form from "../components/Plan_Form";
 import AD_Form from "../components/AD_Form";
 import SUM_Form from "../components/SUM_Form";
+import CONFIRM_Form from "../components/Confirm_Form";
 import "./App.css";
 
 function App() {
   const [form, setForm] = useState({
     personalInfo: { name: "", email: "", phone: "" },
     plan: {
-      plan: "arcade",
+      plan: "",
       yearlySubscription: false,
     },
     planPrice: {
@@ -46,6 +47,8 @@ function App() {
       return <AD_Form props={{ form, setForm }}></AD_Form>;
     if (form.showComponent === "SUM_Form")
       return <SUM_Form props={{ form, setForm }}></SUM_Form>;
+    if (form.showComponent === "CONFIRM_Form")
+      return <CONFIRM_Form props={{ form, setForm }}></CONFIRM_Form>;
   };
 
   return (

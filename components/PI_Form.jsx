@@ -18,60 +18,122 @@ function PI_Form(data) {
     });
   }, []);
 
+  const checkEmailValidity = (email) => {
+    // if (!email.includes("@")) {
+    //   document.querySelector(".pi-error-email").classList.add("pi-form-error");
+    //   document.querySelector(".pi-error-email").innerText =
+    //     "Email should include a @ sign.";
+    //   document.querySelector(".pi-input-email").classList.add("pi-input-error");
+    //   return true;
+    // }
+    // if (!email.substr(email.search("@")).includes(".")) {
+    //   document.querySelector(".pi-error-email").classList.add("pi-form-error");
+    //   document.querySelector(".pi-error-email").innerText =
+    //     "Email should include a provider, e.g. gmail.com";
+    //   document.querySelector(".pi-input-email").classList.add("pi-input-error");
+    //   return true;
+    // }
+    // if (email.includes(" ")) {
+    //   document.querySelector(".pi-error-email").classList.add("pi-form-error");
+    //   document.querySelector(".pi-error-email").innerText =
+    //     "Email should not include spaces.";
+    //   document.querySelector(".pi-input-email").classList.add("pi-input-error");
+    //   return true;
+    // }
+    let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (email.match(mailFormat)) {
+      return false;
+    } else {
+      document.querySelector(".pi-error-email").classList.add("pi-form-error");
+      document.querySelector(".pi-error-email").innerText =
+        "Please provide a valid email.";
+      document.querySelector(".pi-input-email").classList.add("pi-input-error");
+      return true;
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // alert(
     //   `Name: ${formData.name}, Email: ${formData.email}, Phone Number: ${formData.phone}`
     // );
+    let error = false;
+    if (formData.name === "") {
+      document.querySelector(".pi-error-name").classList.add("pi-form-error");
+      document.querySelector(".pi-input-name").classList.add("pi-input-error");
+      error = true;
+    }
+    if (formData.email === "") {
+      document.querySelector(".pi-error-email").classList.add("pi-form-error");
+      document.querySelector(".pi-input-email").classList.add("pi-input-error");
+      error = true;
+    }
+    if (formData.phone === "") {
+      document.querySelector(".pi-error-phone").classList.add("pi-form-error");
+      document.querySelector(".pi-input-phone").classList.add("pi-input-error");
+      error = true;
+    }
+    if (checkEmailValidity(formData.email)) return;
+    if (error) return;
     data.props.setForm((prevFormData) => ({
       ...prevFormData,
       showComponent: "Plan_Form",
+      personalInfo: formData,
     }));
   };
 
   return (
     <>
       <div className="form-header-container">
-        <h2 className="form-header">Personal Info</h2>
-        <p className="form-desc">
+        <div className="form-header">Personal Info</div>
+        <div className="form-desc">
           Please provide your name, email address, and phone number.
-        </p>
+        </div>
       </div>
       {
         <form className="form form-pi">
           <div className="form-input-container form-pi-name-container">
-            <div className="form-text form-pi-text">Name</div>
+            <div className="form-pi-text-container">
+              <div className="form-text form-pi-text">Name</div>
+              <div className="pi-error-name">This field is required</div>
+            </div>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="text-input form-pi-input"
+              className="text-input pi-input-name"
               placeholder="e.g. Stephen King"
             />
           </div>
           <div className="form-input-container form-pi-email-container">
-            <div className="form-text form-pi-text">Email Address</div>
+            <div className="form-pi-text-container">
+              <div className="form-text form-pi-text">Email Address</div>
+              <div className="pi-error-email">This field is required</div>
+            </div>
             <input
               type="text"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="text-input form-pi-input"
+              className="text-input pi-input-email"
               placeholder="e.g. stephenking@lorem.com"
             />
           </div>
           <div className="form-input-container form-pi-phone-container">
-            <div className="form-text form-pi-text">Phone Number</div>
+            <div className="form-pi-text-container">
+              <div className="form-text form-pi-text">Phone Number</div>
+              <div className="pi-error-phone">This field is required</div>
+            </div>
             <input
               type="text"
               id="phone"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="text-input form-pi-input"
+              className="text-input pi-input-phone"
               placeholder="e.g. +1 234 567 890"
             />
           </div>

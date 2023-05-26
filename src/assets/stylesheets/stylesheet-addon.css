@@ -11,7 +11,7 @@
   border: 0.1rem solid var(--light-gray);
   padding: 1rem;
   cursor: pointer;
-  width: 22vw;
+  width: 100%;
 }
 
 .addon-selection:hover {

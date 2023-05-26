@@ -15,6 +15,10 @@ function AD_Form(data) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    data.props.setForm((prevFormData) => ({
+      ...prevFormData,
+      showComponent: "CONFIRM_Form",
+    }));
   };
 
   const goBack = () => {
@@ -58,10 +62,10 @@ function AD_Form(data) {
   return (
     <>
       <div className="form-header-container">
-        <h2 className="form-header">Finishing up</h2>
-        <p className="form-desc">
+        <div className="form-header">Finishing up</div>
+        <div className="form-desc">
           Double-check everything looks OK before confirming.
-        </p>
+        </div>
       </div>
       <div className="summary-container-main">
         <div className="summary-container">
