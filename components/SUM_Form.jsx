@@ -3,6 +3,15 @@ import "/src/assets/stylesheets/stylesheet-summary.css";
 
 function AD_Form(data) {
   const [formData, setFormData] = useState(data.props.form);
+  const [activeSubscription, setActiveSubscription] = useState(
+    data.props.form.plan.yearlySubscription
+  );
+
+  const [addonPrice, setAddonPrice] = useState({
+    online: "+$1/mo",
+    larger: "+$2/mo",
+    profile: "+$2/mo",
+  });
 
   useEffect(() => {
     document.querySelectorAll(".sidebar-counter").forEach((item) => {
@@ -11,6 +20,19 @@ function AD_Form(data) {
         item.classList.add("sidebar-counter-active");
       }
     });
+    if (activeSubscription) {
+      setAddonPrice({
+        online: "+$10/yr",
+        larger: "+$20/yr",
+        profile: "+$20/yr",
+      });
+    } else {
+      setAddonPrice({
+        online: "+$1/mo",
+        larger: "+$2/mo",
+        profile: "+$2/mo",
+      });
+    }
   }, []);
 
   const handleSubmit = (event) => {
@@ -40,15 +62,18 @@ function AD_Form(data) {
 
   const showTotalAddonPrice = () => {
     let sum = 0;
-    formData.addons.onlineService ? sum++ : "";
-    formData.addons.largerStorage ? (sum = sum + 2) : "";
-    formData.addons.customizableProfile ? (sum = sum + 2) : "";
-    if (formData.plan.yearlySubscription) {
+    if (activeSubscription) {
       sum = sum + formData.planPrice.yearly[formData.plan.plan];
+      formData.addons.onlineService ? (sum = sum + 10) : "";
+      formData.addons.largerStorage ? (sum = sum + 20) : "";
+      formData.addons.customizableProfile ? (sum = sum + 20) : "";
     } else {
       sum = sum + formData.planPrice.monthly[formData.plan.plan];
+      formData.addons.onlineService ? sum++ : "";
+      formData.addons.largerStorage ? (sum = sum + 2) : "";
+      formData.addons.customizableProfile ? (sum = sum + 2) : "";
     }
-    if (formData.plan.yearlySubscription) return `+$${sum}/yr`;
+    if (activeSubscription) return `+$${sum}/yr`;
     else return `+$${sum}/mo`;
   };
 
@@ -61,52 +86,63 @@ function AD_Form(data) {
 
   return (
     <>
-      <div className="form-header-container">
-        <div className="form-header">Finishing up</div>
-        <div className="form-desc">
-          Double-check everything looks OK before confirming.
+      <div className="component-container">
+        <div className="form-header-container">
+          <div className="form-header">Finishing up</div>
+          <div className="form-desc">
+            Double-check everything looks OK before confirming.
+          </div>
         </div>
-      </div>
-      <div className="summary-container-main">
-        <div className="summary-container">
-          <div className="summary-plan-container">
-            <div className="summary-plan">
-              <div className="summary-plan-desc">
-                {upperCase(formData.plan.plan)}{" "}
-                {formData.plan.yearlySubscription ? "(Yearly)" : "(Monthly)"}
+        <div className="summary-container-main">
+          <div className="summary-container">
+            <div className="summary-plan-container">
+              <div className="summary-plan">
+                <div className="summary-plan-desc">
+                  {upperCase(formData.plan.plan)}{" "}
+                  {formData.plan.yearlySubscription ? "(Yearly)" : "(Monthly)"}
+                </div>
+                <a className="change-plan-link" onClick={backToPlan}>
+                  Change
+                </a>
               </div>
-              <a onClick={backToPlan}>Change</a>
+              <div className="summary-pricing">{showPricing(formData)}</div>
             </div>
-            <div className="summary-pricing">{showPricing(formData)}</div>
+            <div className="summary-line"></div>
+            <div className="summary-addons">
+              {formData.addons.onlineService ? (
+                <div className="summary-service">
+                  <div className="summary-service-plan">Online service</div>
+                  <div className="summary-service-price">
+                    {addonPrice.online}
+                  </div>
+                </div>
+              ) : null}
+              {formData.addons.largerStorage ? (
+                <div className="summary-service">
+                  <div className="summary-service-plan">Larger storage</div>
+                  <div className="summary-service-price">
+                    {addonPrice.larger}
+                  </div>
+                </div>
+              ) : null}
+              {formData.addons.customizableProfile ? (
+                <div className="summary-service">
+                  <div className="summary-service-plan">
+                    Customizable profile
+                  </div>
+                  <div className="summary-service-price">
+                    {addonPrice.profile}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
-          <div className="summary-line"></div>
-          <div className="summary-addons">
-            {formData.addons.onlineService ? (
-              <div className="summary-service">
-                <div className="summary-service-plan">Online storage</div>
-                <div className="summary-service-price">+$1/mo</div>
-              </div>
-            ) : null}
-            {formData.addons.largerStorage ? (
-              <div className="summary-service">
-                <div className="summary-service-plan">Larger storage</div>
-                <div className="summary-service-price">+$1/mo</div>
-              </div>
-            ) : null}
-            {formData.addons.customizableProfile ? (
-              <div className="summary-service">
-                <div className="summary-service-plan">Customizable profile</div>
-                <div className="summary-service-price">+$2/mo</div>
-              </div>
-            ) : null}
+          <div className="summary-total-container">
+            <div className="summary-total-text">Total (per month)</div>
+            <div className="summary-total-price">{showTotalAddonPrice()}</div>
           </div>
-        </div>
-        <div className="summary-total-container">
-          <div className="summary-total-text">Total (per month)</div>
-          <div className="summary-total-price">{showTotalAddonPrice()}</div>
         </div>
       </div>
-
       <div className="form-buttons">
         <button className="form-previous-step" onClick={goBack}>
           Go Back

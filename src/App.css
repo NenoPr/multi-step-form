@@ -31,6 +31,7 @@
 
 #root {
   min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,6 +53,7 @@ body {
   box-shadow: 0 0 0.5rem 0.1rem var(--light-gray);
   min-width: 30vw;
   width: fit-content;
+  height: fit-content;
 }
 
 .sidebar-container {
@@ -108,10 +110,9 @@ body {
 .form-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 4fr 1fr;
   padding-left: 5vw;
   padding-right: 5vw;
-  width: 25vw;
   justify-content: space-between;
   height: 568px;
   width: 450px;
@@ -120,7 +121,7 @@ body {
 }
 
 .form-header-container {
-  flex: 1;
+  flex: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -128,6 +129,7 @@ body {
   height: fit-content;
   grid-template-columns: 1;
   grid-template-rows: 1;
+  max-width: 100%;
 }
 
 .form-header {
@@ -156,13 +158,14 @@ body {
   padding-right: 2rem;
   color: white;
   background-color: var(--marine-blue);
-  border-radius: 1rem;
+  border-radius: .5rem;
   justify-self: flex-end;
   align-self: flex-end;
   border-color: var(--marine-blue);
   outline-color: var(--marine-blue);
   outline: var(--marine-blue);
   height: fit-content;
+  width: fit-content;
 }
 
 .form-next-step:hover {
@@ -181,4 +184,102 @@ body {
 }
 
 .attribution {
+  align-self: center;
+}
+
+@media (max-width: 1000px) {
+
+  .attribution {
+    display: none;
+  }
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: flex-start;
+    background-color: var(--light-blue);
+    font-family: "Ubuntu";
+  }
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    width: 100vw;
+    min-height: 100vh;
+    gap: 0;
+    padding: 0;
+    background-color: var(--light-blue);
+  }
+
+  .sidebar-container {
+    grid-row: 1;
+    width: 100%;
+    height: 20vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 0rem;
+    background-color: var(--light-blue);
+  }
+
+  .sidebar-info {
+    display: none;
+  }
+
+  .form-container {
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: space-between;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    height: 100%;
+  }
+
+  .form-buttons {
+    flex: 0;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .form-buttons {
+    height: fit-content;
+    background-color: white;
+  }
+
+  .form-next-step {
+    width: fit-content;
+    border-radius: .5rem;
+    align-self: center;
+    margin-right: 1rem;
+  }
+
+  .form-header-container {
+    flex: 0;
+    padding: 1rem;
+    padding-bottom: 0px;
+    width: 80%;
+    background-color: var(--white);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    align-self: center;
+  }
+
+  .component-container {
+    justify-content: flex-start;
+    gap: 0;
+    position: relative;
+    bottom: 5%;
+  }
 }

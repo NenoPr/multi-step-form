@@ -102,89 +102,95 @@ function Plan_Form(data) {
 
   return (
     <>
-      <div className="form-header-container">
-        <div className="form-header">Select your plan</div>
-        <div className="form-desc">
-          You have the option of monthly or yearly billing.
+      <div className="component-container">
+        <div className="form-header-container">
+          <div className="form-header">Select your plan</div>
+          <div className="form-desc">
+            You have the option of monthly or yearly billing.
+          </div>
+        </div>
+        <div className="plan-container">
+          <div className="selection-container">
+            <div
+              className="plan-selection"
+              onClick={handleChange}
+              plan="arcade"
+            >
+              <img
+                src="./src/assets/images/icon-arcade.svg"
+                alt="arcade"
+                className="plan-image"
+              />
+              <div className="plan-desc">
+                <div className="plan-name">Arcade</div>
+                <div className="plan-price">{planPrice.arcade}</div>
+                {formData.yearlySubscription ? (
+                  <div className="plan-yearly-free">2 months free</div>
+                ) : (
+                  <div className="plan-yearly-free plan-yearly-invisible">
+                    2 months free
+                  </div>
+                )}
+              </div>
+            </div>
+            <div
+              className="plan-selection"
+              onClick={handleChange}
+              plan="advanced"
+            >
+              <img
+                src="./src/assets/images/icon-advanced.svg"
+                alt="advanced"
+                className="plan-image"
+              />
+              <div className="plan-desc">
+                <div className="plan-name">Advanced</div>
+                <div className="plan-price">{planPrice.advanced}</div>
+                {formData.yearlySubscription ? (
+                  <div className="plan-yearly-free">2 months free</div>
+                ) : (
+                  <div className="plan-yearly-free plan-yearly-invisible">
+                    2 months free
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="plan-selection" onClick={handleChange} plan="pro">
+              <img
+                src="./src/assets/images/icon-pro.svg"
+                alt="pro"
+                className="plan-image"
+              />
+              <div className="plan-desc">
+                <div className="plan-name">Pro</div>
+                <div className="plan-price">{planPrice.pro}</div>
+                {formData.yearlySubscription ? (
+                  <div className="plan-yearly-free">2 months free</div>
+                ) : (
+                  <div className="plan-yearly-free plan-yearly-invisible">
+                    2 months free
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="plan-rate">
+            <div className="plan-rate-text plan-monthly">Monthly</div>
+            <label className="switch" htmlFor="checkbox">
+              <input
+                type="checkbox"
+                id="checkbox"
+                onChange={handleSubscription}
+                checked={activeSubscription}
+              />
+              <div className="slider round"></div>
+            </label>
+            <div className="plan-rate-text plan-yearly">Yearly</div>
+          </div>
+          <div className="plan-selection-error"></div>
         </div>
       </div>
-      <div className="plan-container">
-        <div className="selection-container">
-          <div className="plan-selection" onClick={handleChange} plan="arcade">
-            <img
-              src="./src/assets/images/icon-arcade.svg"
-              alt="arcade"
-              className="plan-image"
-            />
-            <div className="plan-desc">
-              <div className="plan-name">Arcade</div>
-              <div className="plan-price">{planPrice.arcade}</div>
-              {formData.yearlySubscription ? (
-                <div className="plan-yearly-free">2 months free</div>
-              ) : (
-                <div className="plan-yearly-free plan-yearly-invisible">
-                  2 months free
-                </div>
-              )}
-            </div>
-          </div>
-          <div
-            className="plan-selection"
-            onClick={handleChange}
-            plan="advanced"
-          >
-            <img
-              src="./src/assets/images/icon-advanced.svg"
-              alt="advanced"
-              className="plan-image"
-            />
-            <div className="plan-desc">
-              <div className="plan-name">Advanced</div>
-              <div className="plan-price">{planPrice.advanced}</div>
-              {formData.yearlySubscription ? (
-                <div className="plan-yearly-free">2 months free</div>
-              ) : (
-                <div className="plan-yearly-free plan-yearly-invisible">
-                  2 months free
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="plan-selection" onClick={handleChange} plan="pro">
-            <img
-              src="./src/assets/images/icon-pro.svg"
-              alt="pro"
-              className="plan-image"
-            />
-            <div className="plan-desc">
-              <div className="plan-name">Pro</div>
-              <div className="plan-price">{planPrice.pro}</div>
-              {formData.yearlySubscription ? (
-                <div className="plan-yearly-free">2 months free</div>
-              ) : (
-                <div className="plan-yearly-free plan-yearly-invisible">
-                  2 months free
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="plan-rate">
-          <div className="plan-rate-text plan-monthly">Monthly</div>
-          <label className="switch" htmlFor="checkbox">
-            <input
-              type="checkbox"
-              id="checkbox"
-              onChange={handleSubscription}
-              checked={activeSubscription}
-            />
-            <div className="slider round"></div>
-          </label>
-          <div className="plan-rate-text plan-yearly">Yearly</div>
-        </div>
-        <div className="plan-selection-error"></div>
-      </div>
-      <div className="plan-buttons">
+      <div className="form-buttons">
         <button className="form-previous-step" onClick={goBack}>
           Go Back
         </button>

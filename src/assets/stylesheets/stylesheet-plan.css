@@ -1,18 +1,29 @@
 .plan-selection-error {
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 4;
   justify-self: center;
   align-self: self-end;
   height: 1rem;
   color: red;
   font-weight: 600;
+  margin: 1rem;
+}
+
+.component-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .plan-container {
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 2fr 1fr auto;
   justify-content: space-between;
+  max-width: 100%;
+  row-gap: 1rem;
 }
 
 .selection-container {
@@ -33,14 +44,11 @@
   border: 0.1rem solid var(--light-gray);
   padding: 1rem;
   cursor: pointer;
-  height: fit-content;
-  min-width: 120px;
-  width: max-content;
+  width: 75%;
 }
 
 .plan-selection:hover {
   border-color: var(--purplish-blue);
-  background-color: var(--magnolia);
 }
 
 .plan-selection-selected {
@@ -50,7 +58,7 @@
 
 .plan-image {
   width: 3rem;
-  margin-bottom: 45%;
+  margin-bottom: 35%;
   pointer-events: none;
 }
 
@@ -74,8 +82,8 @@
 .plan-yearly-free {
   font-style: italic;
   color: var(--marine-blue);
-  font-size: .9rem;
-  height: .9rem;
+  font-size: 0.8rem;
+  height: 0.8rem;
 }
 
 .plan-yearly-invisible {
@@ -151,6 +159,7 @@ input:checked + .slider:before {
 .plan-rate-text {
   color: var(--cool-gray);
   font-weight: 700;
+  font-size: 1rem;
 }
 
 .plan-rate-selected {
@@ -161,4 +170,58 @@ input:checked + .slider:before {
   display: flex;
   align-self: flex-end;
   justify-content: space-between;
+}
+
+@media (max-width: 1000px) {
+  .component-container {
+    background-color: white;
+    width: 100%;
+    align-self: center;
+    border-radius: 1rem;
+  }
+  .plan-container {
+    grid-template-rows: 2fr auto auto;
+    width: 100%;
+    background-color: white;
+    align-self: center;
+    justify-content: space-between;
+    margin-left: 0rem;
+    margin-right: 0rem;
+    padding: 0rem;
+    border-bottom-left-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    height: fit-content;
+  }
+  .plan-rate-text {
+    color: var(--cool-gray);
+    font-weight: 700;
+    font-size: 0.7rem;
+  }
+  .selection-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .plan-selection {
+    justify-self: center;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .plan-rate {
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .plan-selection-error {
+    grid-row: 4;
+    margin: 1rem;
+  }
+
+  .plan-image {
+    margin-bottom: 0px;
+  }
 }

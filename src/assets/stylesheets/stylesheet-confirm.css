@@ -1,5 +1,13 @@
-.confirm-container {
+.component-container {
     justify-self: center;
+    border-radius: 1rem;
+    padding: 1rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    align-self: center;
+}
+
+.confirm-container {
     grid-column: 1;
     grid-row: 1 / 4;
     display: flex;
@@ -8,6 +16,8 @@
     justify-content: center;
     gap: 1rem;
     width: 25vw;
+    background-color: white;
+    width: fit-content;
 }
 
 .confirm-image-container {
@@ -32,4 +42,8 @@
 .confirm-text {
     color: var(--cool-gray);
     text-align: center;
+}
+
+@media (max-width: 1000px) {
+
 }
