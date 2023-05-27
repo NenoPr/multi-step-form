@@ -8,7 +8,7 @@ function CONFIRM_Form(data) {
         <div className="confirm-container">
           <div className="confirm-image-container">
             <img
-              src="./src/assets/images/icon-thank-you.svg"
+              src="./images/icon-thank-you.svg"
               alt="thank-you-checkmark"
               className="confirm-image"
             />

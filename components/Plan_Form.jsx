@@ -117,7 +117,7 @@ function Plan_Form(data) {
               plan="arcade"
             >
               <img
-                src="./src/assets/images/icon-arcade.svg"
+                src="./images/icon-arcade.svg"
                 alt="arcade"
                 className="plan-image"
               />
@@ -139,7 +139,7 @@ function Plan_Form(data) {
               plan="advanced"
             >
               <img
-                src="./src/assets/images/icon-advanced.svg"
+                src="./images/icon-advanced.svg"
                 alt="advanced"
                 className="plan-image"
               />
@@ -157,7 +157,7 @@ function Plan_Form(data) {
             </div>
             <div className="plan-selection" onClick={handleChange} plan="pro">
               <img
-                src="./src/assets/images/icon-pro.svg"
+                src="./images/icon-pro.svg"
                 alt="pro"
                 className="plan-image"
               />
