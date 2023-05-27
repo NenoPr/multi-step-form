@@ -108,6 +108,7 @@
   border-radius: 1rem;
   width: fit-content;
   justify-self: flex-end;
+  margin-right: 1rem;
 }
 
 .form-confirm:hover {
@@ -146,15 +147,6 @@
   .selection-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-  }
-
-  .addon-selection {
-    justify-self: center;
-    height: fit-content;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 1rem;
-    font-size: .65rem;
   }
 
   .plan-rate {
